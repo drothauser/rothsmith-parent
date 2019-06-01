@@ -1,0 +1,272 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.rothsmith</groupId>
+	<artifactId>rothsmith-parent</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<revision>1.0.0-SNAPSHOT</revision>
+		<nexus.host>nexus.rothsmith.net</nexus.host>
+		<releaseRepoUrl>http://${nexus.host}/repository/rothsmith-releases</releaseRepoUrl>
+		<snapshotRepoUrl>http://${nexus.host}/repository/rothsmith-snapshots</snapshotRepoUrl>
+		<isRelease>true</isRelease>
+	</properties>
+
+	<scm>
+		<connection>scm:git:git@github.com:drothauser/rothsmith-common.git</connection>
+		<developerConnection>scm:git:git@github.com:drothauser/rothsmith-common.git</developerConnection>
+		<url>https://github.com/drothauser/rothsmith-common.git</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>${releaseRepoUrl}</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>${snapshotRepoUrl}</url>
+		</snapshotRepository>
+		<site>
+			<id>site</id>
+			<url>dav:http://${nexus.host}/nexus/content/sites/site/rothsmith-common/</url>
+		</site>
+	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>1.3</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>1.4</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>1.6</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.7</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbutils</groupId>
+				<artifactId>commons-dbutils</artifactId>
+				<version>1.7</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>1.7</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity-tools</artifactId>
+				<version>2.0</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>2.3.0</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc6</artifactId>
+				<version>11.2.0.4.0</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+				<scope>runtime</scope>
+				<exclusions>
+					<exclusion>
+						<artifactId>mail</artifactId>
+						<groupId>javax.mail</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jms</artifactId>
+						<groupId>javax.jms</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jmxtools</artifactId>
+						<groupId>com.sun.jdmk</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jmxri</artifactId>
+						<groupId>com.sun.jmx</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.microsoft</groupId>
+				<artifactId>sqlserver-driver</artifactId>
+				<version>4.0</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.jt400</groupId>
+				<artifactId>jt400</artifactId>
+				<version>9.5</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.findbugs</groupId>
+				<artifactId>annotations</artifactId>
+				<version>1.3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.xml.ws</groupId>
+				<artifactId>jaxws-rt</artifactId>
+				<version>2.3.0.2</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-java</artifactId>
+				<version>3.13.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-ie-driver</artifactId>
+				<version>3.13.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>1.1.0</version>
+				<configuration>
+					<updatePomFile>true</updatePomFile>
+					<flattenMode>resolveCiFriendliesOnly</flattenMode>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin> <artifactId>maven-resources-plugin</artifactId> <executions> 
+				<execution> <id>replace-pom-placeholder</id> <phase>package</phase> <goals> 
+				<goal>copy-resources</goal> </goals> <configuration> <resources> <resource> 
+				<directory>${basedir}</directory> <includes> <include>pom.xml</include> </includes> 
+				<filtering>true</filtering> </resource> </resources> <outputDirectory>${project.build.directory}/pom-install-deploy-fix</outputDirectory> 
+				</configuration> </execution> </executions> </plugin> <plugin> <artifactId>maven-install-plugin</artifactId> 
+				<version>3.0.0-M1</version> <executions> <execution> <id>default-install</id> 
+				<phase>none</phase> </execution> <execution> <id>overwrite-pom-install</id> 
+				<phase>install</phase> <goals> <goal>install-file</goal> </goals> <configuration> 
+				<packaging>pom</packaging> <file>target/pom-install-deploy-fix/pom.xml</file> 
+				<pomFile>target/pom-install-deploy-fix/pom.xml</pomFile> <version>${project.version}</version> 
+				</configuration> </execution> </executions> </plugin> <plugin> <artifactId>maven-deploy-plugin</artifactId> 
+				<version>3.0.0-M1</version> <executions> <execution> <id>default-deploy</id> 
+				<phase>none</phase> </execution> <execution> <id>overwrite-pom-deploy</id> 
+				<phase>deploy</phase> <goals> <goal>deploy-file</goal> </goals> <configuration> 
+				<packaging>pom</packaging> <file>target/pom-install-deploy-fix/pom.xml</file> 
+				<pomFile>target/pom-install-deploy-fix/pom.xml</pomFile> <url>${deployRepoUrl}</url> 
+				<version>${project.version}</version> <updateReleaseInfo>${isRelease}</updateReleaseInfo> 
+				<repositoryId>snapshots</repositoryId> <uniqueVersion>false</uniqueVersion> 
+				</configuration> </execution> </executions> </plugin> -->
+			<plugin>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.11.2</version>
+				<configuration>
+					<tag>${project.artifactId}-${VERSION_NUMBER}</tag>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
