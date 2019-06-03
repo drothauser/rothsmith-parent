@@ -16,9 +16,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:git@github.com:drothauser/rothsmith-common.git</connection>
-		<developerConnection>scm:git:git@github.com:drothauser/rothsmith-common.git</developerConnection>
-		<url>https://github.com/drothauser/rothsmith-common.git</url>
+		<connection>scm:git:git@github.com:drothauser/rothsmith-parent.git</connection>
+		<developerConnection>scm:git:git@github.com:drothauser/rothsmith-parent.git</developerConnection>
+		<url>https://github.com/drothauser/rothsmith-parent.git</url>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -33,7 +33,7 @@
 		</snapshotRepository>
 		<site>
 			<id>site</id>
-			<url>dav:http://${nexus.host}/nexus/content/sites/site/rothsmith-common/</url>
+			<url>dav:http://${nexus.host}/nexus/content/sites/site/rothsmith-parent/</url>
 		</site>
 	</distributionManagement>
 
