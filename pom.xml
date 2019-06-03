@@ -4,15 +4,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.rothsmith</groupId>
 	<artifactId>rothsmith-parent</artifactId>
-	<version>${revision}</version>
+	<version>${revision}${changelist}</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<revision>1.0.0-SNAPSHOT</revision>
+		<revision>1.0.0</revision>
+		<changelist>-SNAPSHOT</changelist>
 		<nexus.host>nexus.rothsmith.net</nexus.host>
 		<releaseRepoUrl>http://${nexus.host}/repository/rothsmith-releases</releaseRepoUrl>
 		<snapshotRepoUrl>http://${nexus.host}/repository/rothsmith-snapshots</snapshotRepoUrl>
-		<isRelease>true</isRelease>
 	</properties>
 
 	<scm>
@@ -82,12 +82,6 @@
 				<groupId>org.apache.velocity</groupId>
 				<artifactId>velocity-tools</artifactId>
 				<version>2.0</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.quartz-scheduler</groupId>
-				<artifactId>quartz</artifactId>
-				<version>2.3.0</version>
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
@@ -253,7 +247,7 @@
 				<artifactId>maven-scm-plugin</artifactId>
 				<version>1.11.2</version>
 				<configuration>
-					<tag>${project.artifactId}-${VERSION_NUMBER}</tag>
+					<tag>${project.artifactId}-${project.version}</tag>
 				</configuration>
 			</plugin>
 
