@@ -13,6 +13,35 @@
 		<nexus.host>nexus.rothsmith.net</nexus.host>
 		<releaseRepoUrl>http://${nexus.host}/repository/rothsmith-releases</releaseRepoUrl>
 		<snapshotRepoUrl>http://${nexus.host}/repository/rothsmith-snapshots</snapshotRepoUrl>
+		<jenkins.host>rothsmith.net:8080</jenkins.host>
+		<coverage.reports.dir>target/coverage-reports</coverage.reports.dir>
+		<coverage.merged.reportPath>target/coverage-reports/jacoco.exec</coverage.merged.reportPath>
+		<includeDependencySources>true</includeDependencySources>
+		<webservice.srcdir>C:/Users/Doug/git/${project.artifactId}/src-generated/test/java</webservice.srcdir>
+		<java-api.version>1.8</java-api.version>
+		<jaxws.plugin.version>2.3</jaxws.plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jaxws.binding.file>async_binding.xml</jaxws.binding.file>
+		<war.name>rothsmith-common</war.name>
+		<sca.dir>/java/</sca.dir>
+		<sonar.jacoco.itReportPath>target/coverage-reports/jacoco-it.exec</sonar.jacoco.itReportPath>
+		<slf4j.version>1.7.25</slf4j.version>
+		<tomcat.plugin.version>2.2</tomcat.plugin.version>
+		<site.deploy.url>dav:http://${nexus.host}/nexus/content/sites/site/rothsmith-common</site.deploy.url>
+		<webservice.inline.schemas>false</webservice.inline.schemas>
+		<failsafe.version>2.18.1</failsafe.version>
+		<jaxws.version>2.2.10</jaxws.version>
+		<servlet-api.version>4.0.1</servlet-api.version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<sonar.jacoco.reportPath>target/coverage-reports/jacoco-unit.exec</sonar.jacoco.reportPath>
+		<surefire.version>2.18.1</surefire.version>
+		<jacoco.version>0.8.1</jacoco.version>
+		<pmd.plugin.version>3.7</pmd.plugin.version>
+		<pmd.rulesfile>pmdrules.xml</pmd.rulesfile>
+		<checkstyle.plugin.version>3.0.0</checkstyle.plugin.version>
+		<checkstyle.config>checkstyle_checks.xml</checkstyle.config>
+		<findbugs.plugin.version>3.0.4</findbugs.plugin.version>
+		<org.springframework.version>5.0.7.RELEASE</org.springframework.version>
 	</properties>
 
 	<scm>
