@@ -42,6 +42,7 @@
 		<checkstyle.config>checkstyle_checks.xml</checkstyle.config>
 		<findbugs.plugin.version>3.0.4</findbugs.plugin.version>
 		<org.springframework.version>5.0.7.RELEASE</org.springframework.version>
+		<build.manifest.section>manifest</build.manifest.section>
 	</properties>
 
 	<scm>
@@ -252,26 +253,113 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin> <artifactId>maven-resources-plugin</artifactId> <executions> 
-				<execution> <id>replace-pom-placeholder</id> <phase>package</phase> <goals> 
-				<goal>copy-resources</goal> </goals> <configuration> <resources> <resource> 
-				<directory>${basedir}</directory> <includes> <include>pom.xml</include> </includes> 
-				<filtering>true</filtering> </resource> </resources> <outputDirectory>${project.build.directory}/pom-install-deploy-fix</outputDirectory> 
-				</configuration> </execution> </executions> </plugin> <plugin> <artifactId>maven-install-plugin</artifactId> 
-				<version>3.0.0-M1</version> <executions> <execution> <id>default-install</id> 
-				<phase>none</phase> </execution> <execution> <id>overwrite-pom-install</id> 
-				<phase>install</phase> <goals> <goal>install-file</goal> </goals> <configuration> 
-				<packaging>pom</packaging> <file>target/pom-install-deploy-fix/pom.xml</file> 
-				<pomFile>target/pom-install-deploy-fix/pom.xml</pomFile> <version>${project.version}</version> 
-				</configuration> </execution> </executions> </plugin> <plugin> <artifactId>maven-deploy-plugin</artifactId> 
-				<version>3.0.0-M1</version> <executions> <execution> <id>default-deploy</id> 
-				<phase>none</phase> </execution> <execution> <id>overwrite-pom-deploy</id> 
-				<phase>deploy</phase> <goals> <goal>deploy-file</goal> </goals> <configuration> 
-				<packaging>pom</packaging> <file>target/pom-install-deploy-fix/pom.xml</file> 
-				<pomFile>target/pom-install-deploy-fix/pom.xml</pomFile> <url>${deployRepoUrl}</url> 
-				<version>${project.version}</version> <updateReleaseInfo>${isRelease}</updateReleaseInfo> 
-				<repositoryId>snapshots</repositoryId> <uniqueVersion>false</uniqueVersion> 
-				</configuration> </execution> </executions> </plugin> -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+						<manifestEntries>
+							<Build-Time>${maven.build.timestamp}</Build-Time>
+							<Build-Id>${BUILD_ID}</Build-Id>
+							<Build-Number>${BUILD_NUMBER}</Build-Number>
+							<Svn-Revision>${SVN_REVISION}</Svn-Revision>
+							<Build-Tag>${BUILD_TAG}</Build-Tag>
+						</manifestEntries>
+						<manifestSections>
+							<manifestSection>
+								<name>${build.manifest.section}</name>
+								<manifestEntries>
+									<Implementation-Title>${project.name}</Implementation-Title>
+									<Implementation-Version>${project.version}</Implementation-Version>
+									<Implementation-Build-Number>${build.number}</Implementation-Build-Number>
+									<Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
+								</manifestEntries>
+							</manifestSection>
+						</manifestSections>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar</goal>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+						<manifestEntries>
+							<Build-Time>${maven.build.timestamp}</Build-Time>
+							<Build-Id>${BUILD_ID}</Build-Id>
+							<Build-Number>${BUILD_NUMBER}</Build-Number>
+							<Svn-Revision>${SVN_REVISION}</Svn-Revision>
+							<Build-Tag>${BUILD_TAG}</Build-Tag>
+						</manifestEntries>
+						<manifestSections>
+							<manifestSection>
+								<name>${build.manifest.section}</name>
+								<manifestEntries>
+									<Implementation-Title>${project.name}</Implementation-Title>
+									<Implementation-Version>${project.version}</Implementation-Version>
+									<Implementation-Build-Number>${build.number}</Implementation-Build-Number>
+									<Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
+								</manifestEntries>
+							</manifestSection>
+						</manifestSections>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs-deploy</id>
+						<phase>install</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<additionalparam>-Xdoclint:none</additionalparam>
+							<failOnError>false</failOnError>
+							<show>private</show>
+							<detectLinks>true</detectLinks>
+							<includeDependencySources>true</includeDependencySources>
+							<dependencySourceIncludes>
+								<dependencySourceInclude>net.rothsmith:*</dependencySourceInclude>
+							</dependencySourceIncludes>
+							<dependencySourceExcludes>
+								<dependencySourceExclude>org.springframework:*</dependencySourceExclude>
+							</dependencySourceExcludes>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<show>private</show>
+					<detectLinks>true</detectLinks>
+					<includeDependencySources>true</includeDependencySources>
+					<dependencySourceIncludes>
+						<dependencySourceInclude>net.rothsmith:*</dependencySourceInclude>
+					</dependencySourceIncludes>
+					<dependencySourceExcludes>
+						<dependencySourceExclude>org.springframework:*</dependencySourceExclude>
+					</dependencySourceExcludes>
+				</configuration>
+			</plugin>
 			<plugin>
 				<artifactId>maven-scm-plugin</artifactId>
 				<version>1.11.2</version>
