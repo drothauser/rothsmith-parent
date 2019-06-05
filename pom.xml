@@ -273,6 +273,7 @@
 						</manifestEntries>
 						<manifestSections>
 							<manifestSection>
+								<name>${build.manifest.section}</name>
 								<manifestEntries>
 									<Implementation-Title>${project.name}</Implementation-Title>
 									<Implementation-Version>${project.version}</Implementation-Version>
