@@ -42,7 +42,7 @@
 		<checkstyle.config>checkstyle_checks.xml</checkstyle.config>
 		<findbugs.plugin.version>3.0.4</findbugs.plugin.version>
 		<org.springframework.version>5.0.7.RELEASE</org.springframework.version>
-		<build.manifest.section>manifest</build.manifest.section>
+		<build.manifest.section>Implementation Information</build.manifest.section>
 	</properties>
 
 	<scm>
@@ -227,6 +227,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -257,6 +258,7 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.0.2</version>
 				<configuration>
+					<finalName>${project.artifactId}</finalName>
 					<archive>
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
@@ -271,7 +273,6 @@
 						</manifestEntries>
 						<manifestSections>
 							<manifestSection>
-								<name>${build.manifest.section}</name>
 								<manifestEntries>
 									<Implementation-Title>${project.name}</Implementation-Title>
 									<Implementation-Version>${project.version}</Implementation-Version>
