@@ -286,6 +286,38 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+				<configuration>
+					<warName>${project.artifactId}</warName>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+						<manifestEntries>
+							<Build-Time>${maven.build.timestamp}</Build-Time>
+							<Build-Id>${BUILD_ID}</Build-Id>
+							<Build-Number>${BUILD_NUMBER}</Build-Number>
+							<Svn-Revision>${SVN_REVISION}</Svn-Revision>
+							<Build-Tag>${BUILD_TAG}</Build-Tag>
+						</manifestEntries>
+						<manifestSections>
+							<manifestSection>
+								<name>${build.manifest.section}</name>
+								<manifestEntries>
+									<Implementation-Title>${project.name}</Implementation-Title>
+									<Implementation-Version>${project.version}</Implementation-Version>
+									<Implementation-Build-Number>${build.number}</Implementation-Build-Number>
+									<Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
+								</manifestEntries>
+							</manifestSection>
+						</manifestSections>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
 				<version>3.1.0</version>
 				<executions>
