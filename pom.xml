@@ -11,8 +11,6 @@
 		<revision>1.0.0</revision>
 		<changelist>-SNAPSHOT</changelist>
 		<rothsmith-dependency-version>${rothsmith-dependency-version-dev}</rothsmith-dependency-version>
-		<rothsmith-dependency-version-dev>[${revision}-SNAPSHOT]</rothsmith-dependency-version-dev>
-		<rothsmith-dependency-version-release>[${revision}-,)</rothsmith-dependency-version-release>
 		<nexus.host>nexus.rothsmith.net</nexus.host>
 		<releaseRepoUrl>http://${nexus.host}/repository/rothsmith-releases</releaseRepoUrl>
 		<snapshotRepoUrl>http://${nexus.host}/repository/rothsmith-snapshots</snapshotRepoUrl>
