@@ -278,6 +278,7 @@
 									<Implementation-Version>${project.version}</Implementation-Version>
 									<Implementation-Build-Number>${build.number}</Implementation-Build-Number>
 									<Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
+									<Implementation-SCM-Tag>${BUILD_TAG}</Implementation-SCM-Tag>
 								</manifestEntries>
 							</manifestSection>
 						</manifestSections>
@@ -309,6 +310,7 @@
 									<Implementation-Version>${project.version}</Implementation-Version>
 									<Implementation-Build-Number>${build.number}</Implementation-Build-Number>
 									<Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
+									<Implementation-SCM-Tag>${BUILD_TAG}</Implementation-SCM-Tag>
 								</manifestEntries>
 							</manifestSection>
 						</manifestSections>
@@ -349,6 +351,7 @@
 									<Implementation-Version>${project.version}</Implementation-Version>
 									<Implementation-Build-Number>${build.number}</Implementation-Build-Number>
 									<Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
+									<Implementation-SCM-Tag>${BUILD_TAG}</Implementation-SCM-Tag>
 								</manifestEntries>
 							</manifestSection>
 						</manifestSections>
