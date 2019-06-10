@@ -1018,6 +1018,7 @@
 		<profile>
 			<id>release-develop</id>
 			<properties>
+				<changelist></changelist>
 				<rothsmith-dependency-version>${rothsmith-dependency-version-release}</rothsmith-dependency-version>
 			</properties>
 		</profile>
