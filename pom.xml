@@ -230,7 +230,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -261,7 +260,6 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.0.2</version>
 				<configuration>
-					<finalName>${project.artifactId}</finalName>
 					<archive>
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
@@ -292,7 +290,6 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.3</version>
 				<configuration>
-					<warName>${project.artifactId}</warName>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<archive>
 						<manifest>
