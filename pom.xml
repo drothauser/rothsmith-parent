@@ -3,14 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.rothsmith</groupId>
-	<artifactId>rothsmith-parent</artifactId>
-	<version>${revision}${changelist}</version>
+	<artifactId>rothsmith-parent${changelist}</artifactId>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<revision>1.0.0</revision>
 		<changelist>-SNAPSHOT</changelist>
-		<rothsmith-dependency-version>${rothsmith-dependency-version-dev}</rothsmith-dependency-version>
+		<rothsmith-dep-version>${rothsmith-dep-snapshot}</rothsmith-dep-version>
+		<rothsmith-dep-snapshot>(,${revision}-SNAPSHOT]</rothsmith-dep-snapshot>
+		<rothsmith-dep-release>(,${revision}-][${revision}-,)</rothsmith-dep-release>
 		<nexus.host>nexus.rothsmith.net</nexus.host>
 		<releaseRepoUrl>http://${nexus.host}/repository/rothsmith-releases</releaseRepoUrl>
 		<snapshotRepoUrl>http://${nexus.host}/repository/rothsmith-snapshots</snapshotRepoUrl>
@@ -69,6 +70,60 @@
 
 	<dependencyManagement>
 		<dependencies>
+
+			<!-- Rothsmith Dependencies -->
+			<dependency>
+				<groupId>net.rothsmith</groupId>
+				<artifactId>rothsmith-encrypt</artifactId>
+				<version>${rothsmith-dep-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.rothsmith</groupId>
+				<artifactId>rothsmith-database</artifactId>
+				<version>${rothsmith-dep-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.rothsmith</groupId>
+				<artifactId>genericdao-api</artifactId>
+				<version>${rothsmith-dep-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.rothsmith</groupId>
+				<artifactId>genericdao-dbutils</artifactId>
+				<version>${rothsmith-dep-version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.oracle</groupId>
+						<artifactId>ojdbc6</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>net.sf.jt400</groupId>
+						<artifactId>jt400</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.microsoft</groupId>
+						<artifactId>sqlserver-driver</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>net.rothsmith</groupId>
+				<artifactId>rothsmith-encrypt</artifactId>
+				<version>${rothsmith-dep-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.rothsmith</groupId>
+				<artifactId>rothsmith-props</artifactId>
+				<version>${rothsmith-dep-version}</version>			
+			</dependency>
+			<dependency>
+				<groupId>net.rothsmith</groupId>
+				<artifactId>rothsmith-testutils</artifactId>
+				<version>${rothsmith-dep-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- End Rothsmith Dependencies -->
+
 			<dependency>
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest-all</artifactId>
@@ -1015,9 +1070,9 @@
 		</profile>
 
 		<profile>
-			<id>release-develop</id>
+			<id>release-dev</id>
 			<properties>
-				<rothsmith-dependency-version>${rothsmith-dependency-version-release}</rothsmith-dependency-version>
+				<rothsmith-dep-version>${rothsmith-dep-release}</rothsmith-dep-version>
 			</properties>
 		</profile>
 
