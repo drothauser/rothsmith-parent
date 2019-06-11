@@ -23,7 +23,6 @@
 		<jaxws.plugin.version>2.3</jaxws.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jaxws.binding.file>async_binding.xml</jaxws.binding.file>
-		<war.name>rothsmith-common</war.name>
 		<sca.dir>/java/</sca.dir>
 		<sonar.jacoco.itReportPath>target/coverage-reports/jacoco-it.exec</sonar.jacoco.itReportPath>
 		<slf4j.version>1.7.25</slf4j.version>
