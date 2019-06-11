@@ -108,11 +108,6 @@
 			</dependency>
 			<dependency>
 				<groupId>net.rothsmith</groupId>
-				<artifactId>rothsmith-encrypt</artifactId>
-				<version>${rothsmith-dep-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.rothsmith</groupId>
 				<artifactId>rothsmith-props</artifactId>
 				<version>${rothsmith-dep-version}</version>			
 			</dependency>
