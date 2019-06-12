@@ -316,7 +316,6 @@
 							<Build-Time>${maven.build.timestamp}</Build-Time>
 							<Build-Id>${BUILD_ID}</Build-Id>
 							<Build-Number>${BUILD_NUMBER}</Build-Number>
-							<Svn-Revision>${SVN_REVISION}</Svn-Revision>
 							<Build-Tag>${BUILD_TAG}</Build-Tag>
 						</manifestEntries>
 						<manifestSections>
