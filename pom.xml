@@ -43,7 +43,7 @@
 		<checkstyle.config>checkstyle_checks.xml</checkstyle.config>
 		<findbugs.plugin.version>3.0.4</findbugs.plugin.version>
 		<org.springframework.version>5.0.7.RELEASE</org.springframework.version>
-		<build.manifest.section>Implementation Information</build.manifest.section>
+		<build.manifest.section>Rothsmith Implementation Information</build.manifest.section>
 	</properties>
 
 	<scm>
@@ -320,6 +320,17 @@
 						</manifestEntries>
 						<manifestSections>
 							<manifestSection>
+								<name>Java Implementation Information</name>
+								<manifestEntries>
+									<Java-Version>${java.version}</Java-Version>
+									<Java-API-Version>${java-api.version}</Java-API-Version>
+									<Java-Specification-Name>${java.specification.name}</Java-Specification-Name>
+									<Java-Specification-Vendor>${java.specification.vendor}</Java-Specification-Vendor>
+									<Java-Home>${java.home}</Java-Home>
+									<JAVA-Runtime-Name>${java.runtime.name}</JAVA-Runtime-Name>
+								</manifestEntries>
+							</manifestSection>
+							<manifestSection>
 								<name>${build.manifest.section}</name>
 								<manifestEntries>
 									<Implementation-Title>${project.name}</Implementation-Title>
@@ -327,7 +338,6 @@
 									<Implementation-Build-Number>${build.number}</Implementation-Build-Number>
 									<Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
 									<Implementation-SCM-Tag>${project.artifactId}-${project.version}</Implementation-SCM-Tag>
-									ZZ
 								</manifestEntries>
 							</manifestSection>
 						</manifestSections>
