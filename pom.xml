@@ -327,6 +327,7 @@
 									<Implementation-Build-Number>${build.number}</Implementation-Build-Number>
 									<Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
 									<Implementation-SCM-Tag>${project.artifactId}-${project.version}</Implementation-SCM-Tag>
+									ZZ
 								</manifestEntries>
 							</manifestSection>
 						</manifestSections>
