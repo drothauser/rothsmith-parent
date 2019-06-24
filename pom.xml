@@ -15,6 +15,7 @@
 		<nexus.host>nexus.rothsmith.net</nexus.host>
 		<releaseRepoUrl>http://${nexus.host}/repository/rothsmith-releases</releaseRepoUrl>
 		<snapshotRepoUrl>http://${nexus.host}/repository/rothsmith-snapshots</snapshotRepoUrl>
+		<mixedRepoUrl>http://${nexus.host}/repository/rothsmith-mixed</mixedRepoUrl>
 		<jenkins.host>rothsmith.net:8080</jenkins.host>
 		<coverage.reports.dir>target/coverage-reports</coverage.reports.dir>
 		<coverage.merged.reportPath>target/coverage-reports/jacoco.exec</coverage.merged.reportPath>
@@ -362,6 +363,17 @@
 						</manifestEntries>
 						<manifestSections>
 							<manifestSection>
+								<name>Java Implementation Information</name>
+								<manifestEntries>
+									<Java-Version>${java.version}</Java-Version>
+									<Java-API-Version>${java-api.version}</Java-API-Version>
+									<Java-Specification-Name>${java.specification.name}</Java-Specification-Name>
+									<Java-Specification-Vendor>${java.specification.vendor}</Java-Specification-Vendor>
+									<Java-Home>${java.home}</Java-Home>
+									<JAVA-Runtime-Name>${java.runtime.name}</JAVA-Runtime-Name>
+								</manifestEntries>
+							</manifestSection>
+							<manifestSection>
 								<name>${build.manifest.section}</name>
 								<manifestEntries>
 									<Implementation-Title>${project.name}</Implementation-Title>
@@ -401,6 +413,17 @@
 							<Build-Tag>${BUILD_TAG}</Build-Tag>
 						</manifestEntries>
 						<manifestSections>
+							<manifestSection>
+								<name>Java Implementation Information</name>
+								<manifestEntries>
+									<Java-Version>${java.version}</Java-Version>
+									<Java-API-Version>${java-api.version}</Java-API-Version>
+									<Java-Specification-Name>${java.specification.name}</Java-Specification-Name>
+									<Java-Specification-Vendor>${java.specification.vendor}</Java-Specification-Vendor>
+									<Java-Home>${java.home}</Java-Home>
+									<JAVA-Runtime-Name>${java.runtime.name}</JAVA-Runtime-Name>
+								</manifestEntries>
+							</manifestSection>
 							<manifestSection>
 								<name>${build.manifest.section}</name>
 								<manifestEntries>
@@ -1125,6 +1148,16 @@
 			<properties>
 				<rothsmith-dep-version>${rothsmith-dep-release}</rothsmith-dep-version>
 			</properties>
+		</profile>
+
+		<profile>
+			<id>test</id>
+			<distributionManagement>
+				<repository>
+					<id>mixed</id>
+					<url>${mixedRepoUrl}</url>
+				</repository>
+			</distributionManagement>
 		</profile>
 
 	</profiles>
