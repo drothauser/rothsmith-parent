@@ -43,7 +43,8 @@
 		<checkstyle.plugin.version>3.0.0</checkstyle.plugin.version>
 		<checkstyle.config>checkstyle_checks.xml</checkstyle.config>
 		<findbugs.plugin.version>3.0.4</findbugs.plugin.version>
-		<org.springframework.version>5.0.7.RELEASE</org.springframework.version>
+		<spring.version>5.3.9</spring.version>
+		<spring.boot.version>2.5.4</spring.boot.version>
 		<build.manifest.section>Rothsmith Implementation Information</build.manifest.section>
 	</properties>
 
@@ -94,8 +95,8 @@
 				<version>${rothsmith-dep-version}</version>
 				<exclusions>
 					<exclusion>
-						<groupId>com.oracle</groupId>
-						<artifactId>ojdbc6</artifactId>
+						<groupId>com.oracle.database.jdbc</groupId>
+						<artifactId>ojdbc8</artifactId>
 					</exclusion>
 					<exclusion>
 						<groupId>net.sf.jt400</groupId>
@@ -166,9 +167,9 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
-				<groupId>com.oracle</groupId>
-				<artifactId>ojdbc6</artifactId>
-				<version>11.2.0.4.0</version>
+				<groupId>com.oracle.database.jdbc</groupId>
+				<artifactId>ojdbc8</artifactId>
+				<version>21.3.0.0</version>
 				<scope>runtime</scope>
 			</dependency>
 			<dependency>
@@ -255,13 +256,19 @@
 				<artifactId>selenium-ie-driver</artifactId>
 				<version>3.13.0</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
 			<scope>test</scope>
 			<exclusions>
 				<exclusion>
